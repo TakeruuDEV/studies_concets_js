@@ -1,101 +1,101 @@
 // Criar um exemplo de funções puras e impuras
 // Função pura
-function exibirNome(nome){
-    return nome;
+function showName(name){
+    return name;
 }
 console.log("\nExemplo função pura: ");
 
-console.log(exibirNome("Maicão\n"));
+console.log(showName("Maicão\n"));
 
 // Função impura
-resultado = 9;
-function contando(a){
-    resultado += a;
-    return resultado;
+result = 9;
+function counting(a){
+    result += a;
+    return result;
 }
 console.log("Exemplo função ímpura: ");
-console.log(contando(10),"\n");
+console.log(counting(10),"\n");
 
 //---------------------------------------------//
 
 // Criar um exemplo de currying
-function somandoCurry(value1){
+function addCurry(value1){
     return function(value2) {
         return value1+ value2
     }
 }
 console.log("Exemplo função currying: ");
-console.log(somandoCurry(2)(2),"\n");
+console.log(addCurry(2)(2),"\n");
 
 //---------------------------------------------//
 
 // Criar um exemplo de funções de ordem superior (higher-order functions)
-function aplicarFuncao(valor, fn){
-    return fn(valor);
+function aplyFunction(value, fn){
+    return fn(value);
 }
   
-function multiplicarPor2(x){
+function multiplyBy2(x){
     return x * 2;
 }
 console.log("Exemplo função de ordem superior: ");
-console.log(aplicarFuncao(5, multiplicarPor2), "\n");
+console.log(aplyFunction(5, multiplyBy2), "\n");
 
 //---------------------------------------------//
 
 // Criar um exemplo de closure
-function saudarUsuario(nome){
-    const saudacao = "Olá, ";
+function hiToUser(name){
+    const saudation = "Olá, ";
     return function() {
-        console.log(saudacao + nome + "!\n");
+        console.log(saudation + name + "!\n");
     }
 }
-const saudarFernando = saudarUsuario("Fernando");
+const saudationFernando = hiToUser("Fernando");
 
 console.log("Exemplo de função closure: ");
-saudarFernando();
+saudationFernando();
 
 //---------------------------------------------//
 
 // Criar um exemplo de callbacks
-function darTchau(callback){
-    const nome = "Fernando";
-    callback(nome);
+function giveBye(callback){
+    const name = "Fernando";
+    callback(name);
 }
-function exibirTchau(nome){
-    console.log("Tchau, " + nome + "\n");
+function showBye(name){
+    console.log("Tchau, " + name + "\n");
 }
 console.log("Exemplo função Callback: ");
-darTchau(exibirTchau);
+giveBye(showBye);
 
 //---------------------------------------------//
 
 // Criar um exemplo de imutabilidade
-const pessoa = {nome: "Fernando", idade: 19};
-const novaPessoa = {...pessoa, idade: 20};
+const person = {name: "Fernando", age: 19};
+const newPerson = {...person, age: 20};
 
 console.log("Exemplo de imutabilidade: ");
-console.log(pessoa);
-console.log(novaPessoa + "\n");
+console.log(person);
+console.log(newPerson + "\n");
 
 //---------------------------------------------//
 
 // Criar um exemplo de deep copy e shallow copy
-const original = {nome: "Fernando", idade: 19}
+const original = {name: "Fernando", age: 19}
 
 // Shallow Copy
-const copia = {...original}
-copia.nome = "Felipe Nunes";
-copia.idade = "23";
+const copy = {...original}
+copy.name = "Felipe Nunes";
+copy.age = "23";
 
 console.log("Exemplo shallow copy: ");
 console.log(original);
-console.log(copia);
+console.log(copy);
 
 // Deep Copy
-const deepCopia = JSON.parse(JSON.stringify(original));
-deepCopia.nome = "Juninho";
-deepCopia.idade = "20";
+const deepCopy = JSON.parse(JSON.stringify(original));
+deepCopy.name = "Juninho";
+deepCopy.age = "20";
 
 console.log("\nExemplo deep copy: ");
 console.log(original);
-console.log(deepCopia);
+console.log(deepCopy);
