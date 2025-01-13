@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with DOM</title>
+</head>
+<body>
+    <script>
+        const input = document.createElement("input");
+        const addButton = document.createElement("button");
+        const deleteButton = document.createElement("button");
 
+        addButton.textContent = "Adicionar";
+        deleteButton.textContent = "Excluir";
+
+        document.body.appendChild(input);
+        document.body.appendChild(addButton);
+        document.body.appendChild(deleteButton);
+
+        let list;
+
+        deleteButton.disabled = true;
+
+        addButton.addEventListener("click", () => {
+            const text = input.value.trim();
+            if (text === "") return;
+
+            if (!list) {
+                list = document.createElement("ul");
+                document.body.appendChild(list);
+            }
+
+            const existingItems = Array.from(list.children).map(item => item.textContent);
+            if (!existingItems.includes(text)) {
+                const listItem = document.createElement("li");
+                listItem.textContent = text;
+                list.appendChild(listItem);
+            }
+
+            input.value = "";
+
+            deleteButton.disabled = list.children.length === 0;
+        });
+
+        deleteButton.addEventListener("click", () => {
+            if (list && list.children.length > 0) {
+                list.removeChild(list.lastElementChild);
+            }
+
+            deleteButton.disabled = !list || list.children.length === 0;
+        });
+    </script>
+</body>
+</html>
